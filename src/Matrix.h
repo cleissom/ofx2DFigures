@@ -40,7 +40,7 @@ namespace Figures
     class Matrix
     {
         public:
-            GLdouble data[16];
+            GLfloat data[16];
 
             Matrix()
             {
@@ -78,10 +78,10 @@ namespace Figures
 
             ofPoint TransformInverse(const ofPoint& point)
             {
-                double aedb = data[0]*data[5]-data[1]*data[4];
-                double x = data[5]*(point.x - data[12]) + data[4]*(data[13]-point.y);
+                float aedb = data[0]*data[5]-data[1]*data[4];
+                float x = data[5]*(point.x - data[12]) + data[4]*(data[13]-point.y);
                 x = x / aedb;
-                double y = data[1]*(data[12] - point.x) + data[0]*(point.y - data[13]);
+                float y = data[1]*(data[12] - point.x) + data[0]*(point.y - data[13]);
                 y = y / aedb;
                 return ofPoint(x,y);
             }
@@ -116,8 +116,8 @@ namespace Figures
             {
                 int n = 4;
                 Matrix matrix_r = Matrix();
-                double a[16];
-                double b[16];
+                float a[16];
+                float b[16];
                 for ( int i = 0; i < n*n; i ++)
                 {
                     a[i] = data[i];

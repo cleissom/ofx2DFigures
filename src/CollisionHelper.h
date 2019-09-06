@@ -64,12 +64,6 @@ namespace Figures
                 return ((bx - ax) * (py - ay) - (px - ax) * (by - ay));
             }
 
-            /// Givven a segment A(ax,ay)--B(bx,by) returns if the point P(px,py) is at the left side of the segment.
-            static double IsLeft(double ax, double ay, double bx, double by, float px, float py)
-            {
-                return ((bx - ax) * (py - ay) - (px - ax) * (by - ay));
-            }
-
             /// Checks a collision of the point P (x,y) with the triangle (0,0) - A - B
             static bool CollideTriangle(ofPoint A, ofPoint B, float x, float y)
             {
@@ -91,7 +85,7 @@ namespace Figures
             }
 
             /// Calculates the determinant of two givven vectors.
-            static double determinant(ofPoint vec1, ofPoint vec2)
+            static float determinant(ofPoint vec1, ofPoint vec2)
             {
                 return vec1.x * vec2.y - vec1.y * vec2.x;
             }
@@ -99,9 +93,9 @@ namespace Figures
             /// Returns the collision point between the two vectors a-b and c-d.
             static ofPoint edgeIntersection(ofPoint a, ofPoint b, ofPoint c, ofPoint d)
             {
-                double det = determinant(b - a, c - d);
-                double t = determinant(c - a, c - d) / det;
-                double u = determinant(b - a, c - a) / det;
+                float det = determinant(b - a, c - d);
+                float t = determinant(c - a, c - d) / det;
+                float u = determinant(b - a, c - a) / det;
                 if ((t < 0) || (u < 0) || (t > 1) || (u > 1)) return ofPoint(-1, -1);
                 //return a * (1 - t) + t * b;
                 ofPoint tmp_b = b * t;

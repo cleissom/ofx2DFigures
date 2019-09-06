@@ -77,7 +77,7 @@ void Figure::SetTexture(ofImage& image)
 
 void Figure::Draw()
 {
-    glGetDoublev(GL_MODELVIEW_MATRIX,matrix.data);
+    glGetFloatv(GL_MODELVIEW_MATRIX,matrix.data);
     if(CollisionHelper::debug_graphics)
     {
         bbox.Draw();
@@ -92,7 +92,7 @@ void Figure::Draw()
 
 void Figure::DrawStroke()
 {
-    glGetDoublev(GL_MODELVIEW_MATRIX,matrix.data);
+    glGetFloatv(GL_MODELVIEW_MATRIX,matrix.data);
     DesignStroke();
     if(CollisionHelper::debug_graphics)
         bbox.Draw();
